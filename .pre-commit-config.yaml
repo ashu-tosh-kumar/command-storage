@@ -10,14 +10,14 @@ repos:
     rev: 7.0.0
     hooks:
       - id: flake8
-        args: [--config=./tox.ini]
+        args: [--config=./pyproject.toml]
         language_version: python3.9
 
   - repo: https://github.com/pycqa/isort
     rev: 5.13.2
     hooks:
       - id: isort
-        args: ["--settings-path", "tox.ini"]
+        args: ["--settings-path", "pyproject.toml"]
         language_version: python3.9
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
