@@ -19,22 +19,6 @@ exclude = '''
 )/
 '''
 
-[tool.flake8]
-ignore = "E712, E203, E266, E501, W503, W504, F403, F841"
-max-line-length = 160
-select = "B,C,E,F,W,T4,B9"
-exclude = [
-  "*/migrations/*",
-  "./migrations*",
-  "./venv*",
-  ".svn",
-  "CVS",
-  ".bzr",
-  ".hg",
-  ".git",
-  "__pycache__",
-]
-
 [tool.isort]
 profile = "black"
 skip = ["migrations", ".env", "venv", ".local", ".history", ".vscode"]
