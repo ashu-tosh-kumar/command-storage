@@ -198,6 +198,6 @@ cmds update [OPTIONS] ORIG_KEY
 
 - This is my first CLI based application and [Real Python's
   article](https://realpython.com/python-typer-cli/) helped a lot.
-- Built using [Typer](https://typer.tiangolo.com/).
+- Built with ❤️ using [Typer](https://typer.tiangolo.com/).
 - Fuzzy Matching logic: [TheFuzz](https://github.com/seatgeek/thefuzz).
 - Printing in tabular format: [tabulate](https://github.com/astanin/python-tabulate)
