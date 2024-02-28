@@ -36,30 +36,38 @@ solution, I decided to create a CLI application to streamline this process.
 
 ## Installation
 
+//TODO @ashutosh
+
 ## Examples
+
+Seeking help.
 
 ```bash
 cmds --help
 ```
 
-## Usage
-
-Seeking help.
-
-```bash
-cmds [OPTIONS] COMMAND [ARGS]...
-```
-
 ![alt text](<images/cmds help.png>)
 
-Storing some commands into the `cmds`
+Storing some commands into the `cmds`.
 
 ```bash
 cmds store --key "count no of files" --command "ls | wc -l" --description "count no of files in a directory"
 cmds store --key "run python test with cov" --command "pytest --cov --cov-report term --cov-report xml:coverage.xml" --description "pytest with cov"
 ```
 
+Viewing all commands stored in `cmds`.
+
+```bash
+cmds list
+```
+
 ![alt text](<images/cmds list.png>)
+
+## Usage
+
+```bash
+cmds [OPTIONS] COMMAND [ARGS]...
+```
 
 **Options**:
 
@@ -192,4 +200,4 @@ cmds update [OPTIONS] ORIG_KEY
   article](https://realpython.com/python-typer-cli/) helped a lot.
 - Built using [Typer](https://typer.tiangolo.com/).
 - Fuzzy Matching logic: [TheFuzz](https://github.com/seatgeek/thefuzz).
-- Printing in tabular format: [tabulate](https://github.com/astanin/python-tabulate).
+- Printing in tabular format: [tabulate](https://github.com/astanin/python-tabulate)
