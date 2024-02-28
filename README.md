@@ -26,6 +26,8 @@ keep looking up. Traditionally, we might store these commands in a file and then
 and paste them into the terminal when needed. Recognizing the need for a more efficient
 solution, I decided to create a CLI application to streamline this process.
 
+You can find the project on [pip](https://pypi.org/project/command-storage/).
+
 ## Features
 
 - Store CLI commands with custom keys for easy retrieval.
@@ -36,7 +38,7 @@ solution, I decided to create a CLI application to streamline this process.
 
 ## Installation
 
-//TODO @ashutosh
+- Using pip: `pip install command-storage`
 
 ## Examples
 
