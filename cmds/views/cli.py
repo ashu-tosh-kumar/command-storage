@@ -91,4 +91,4 @@ def version(version: Optional[bool] = _INITIAL_VERSION) -> None:
 
 
 if __name__ == "__main__":
-    app()
+    app(prog_name=APP_NAME)

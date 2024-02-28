@@ -1,8 +1,9 @@
+import os
 from datetime import datetime
 from pathlib import Path
 
 import typer
-from prettytable.colortable import ColorTable, Themes
+from tabulate import tabulate
 
 from cmds.controller.app import get_cmds
 from cmds.initializer import app
@@ -49,15 +50,25 @@ def list(key: str = _INITIAL_KEY) -> None:
         raise typer.Exit()
 
     # echo commands
-    table = ColorTable(theme=Themes.OCEAN)
-    table.field_names = ["S/No.", "Key", "Command", "Description"]
+    table = []
+    headers = ["Key", "Command", "Description"]
+    terminal_width_columns: int = os.get_terminal_size().columns
 
-    for idx, (key, command) in enumerate(all_commands.commands.items()):
+    for key, command in all_commands.commands.items():
         _command = command.command
         description = command.description
-        table.add_row([idx + 1, f"'{key}'", f"'{_command}'", f"'{description}'" if description else ""])
+        row = [f"'{key}'", f"'{_command}'", f"'{description}'" if description else ""]
+        table.append(row)
 
-    typer.secho(table)
+    typer.secho(
+        tabulate(
+            table,
+            headers=headers,
+            tablefmt="grid",
+            maxcolwidths=[int(terminal_width_columns // 4), int(terminal_width_columns // 4), int(terminal_width_columns // 4)],
+        ),
+        fg=typer.colors.CYAN,
+    )
 
 
 @app.command()

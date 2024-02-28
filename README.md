@@ -1,76 +1,195 @@
 # command-storage [WIP]
 
 - [command-storage \[WIP\]](#command-storage-wip)
+  - [About](#about)
+  - [Features](#features)
   - [Installation](#installation)
-  - [How to Use? CRUD Operations](#how-to-use-crud-operations)
-    - [Create Operations](#create-operations)
-    - [Read Operations](#read-operations)
-    - [Update Operations](#update-operations)
-    - [Delete Operations](#delete-operations)
-    - [Credits](#credits)
+  - [Examples](#examples)
+  - [Usage](#usage)
+    - [`cmds delete`](#cmds-delete)
+    - [`cmds export`](#cmds-export)
+    - [`cmds init`](#cmds-init)
+    - [`cmds list`](#cmds-list)
+    - [`cmds store`](#cmds-store)
+    - [`cmds update`](#cmds-update)
+  - [Credits](#credits)
 
-A command line tool to store CLI commands for quick access and usage.
+## About
 
-I have found myself in need often to store certain commands for later usage. Generally
-these are the commands I cant always remember or find useful to remember. Currently I
-would store them into a file and then copy paste into the terminal for usage.
+`cmds` is a command-line tool designed to store CLI commands for quick access and usage.
+Think of it as a simple notes app specifically tailored for storing commands using
+customizable keys.
 
-So, it got me thinking of creating one simple CLI based tool to store such commands.
+Oftentimes, we find ourselves needing to store certain commands for later use. These may
+be commands that are not easily remembered or ones that we find useful but don't want to
+keep looking up. Traditionally, we might store these commands in a file and then copy
+and paste them into the terminal when needed. Recognizing the need for a more efficient
+solution, I decided to create a CLI application to streamline this process.
+
+## Features
+
+- Store CLI commands with custom keys for easy retrieval.
+- Quickly access stored commands with fuzzy search without the need to search through
+  files.
+- Organize commands based on your workflow or preferences.
+- Export all commands into a JSON file.
 
 ## Installation
 
-Initialize the application: `cmds init`
+## Examples
 
-## How to Use? CRUD Operations
+```bash
+cmds --help
+```
 
-I would like to do simple CRUD operations. I am listing all features I intend to add
-over time. The ones marked with `[Done]` are implemented so far. I will keep updating
-these as per my need and development or any reviews. The ones marked `[TODO]` are put
-here from on top of my mind as moonshots.
+## Usage
 
-- Enter into interactive mode `cmds`. `[TODO]`.
-- Key must be unique for each command. If you repeat the key, you would get a warning
-  about the same.
+Seeking help.
 
-### Create Operations
+```bash
+cmds [OPTIONS] COMMAND [ARGS]...
+```
 
-- Be able to store commands by giving them a helpful key name to refer to (description
-  is optional). `cmds store --key "<key>" --command "<command>" --description
-  "<description>"`
-- Be able to store parametrized commands so that a command can be passed arguments
-  before running/viewing. `[TODO]`
+![alt text](<images/cmds help.png>)
 
-### Read Operations
+Storing some commands into the `cmds`
 
-- Get help. `cmds --help` or `cmds -h`
-- Be able to view all stored commands. `cmds list`.
-- Be able to view a command by its key. `cmds list --key "<key_name>"`.
-- Be able to export all/filtered commands into a file. `cmds --export <file_name>` or
-  `cmds -e <file_name>`
-- (Interactive mode) Be able to copy selected command (with/without passing parameters).
-  `[TODO]`
-- (Interactive mode) Be able to run selected command (with/without passing parameters).
-  `[TODO]`
+```bash
+cmds store --key "count no of files" --command "ls | wc -l" --description "count no of files in a directory"
+cmds store --key "run python test with cov" --command "pytest --cov --cov-report term --cov-report xml:coverage.xml" --description "pytest with cov"
+```
 
-### Update Operations
+![alt text](<images/cmds list.png>)
 
-- Be able to update a command by its key (Both `--command` and `--description` are
-  optional). `cmds update <key_initial> --command <command> --description <description>`
-- Be able to update the original key. `cmds update <key_initial> --key <key_new>`. You
-  can mix it with previous command also `cmds update <key_initial> --key <key_new>
-  --command <command> --description <description>`
-- (Interactive mode) Be able to select a command and update it. `[TODO]`
+**Options**:
 
-### Delete Operations
+- `-v, --version`: Show cmds version.
+- `--help`: Show this message and exit.
 
-- Be able to delete a command by its key. `cmds delete <key>`. Also supports deleting
-  all data once: `cmds delete --all`. Passing at least one of key or `--all` is
-  mandatory.
-- (Interactive mode) Be able to select a command and delete it. `[TODO]`
+**Commands**:
 
-### Credits
+- `delete`: Allows deletion of stored command by key
+- `export`: Exports all stored commands into a JSON file.
+- `init`: Initialize the application.
+- `list`: Show list of all stored commands.
+- `store`: Store a new command into cmds.
+- `update`: Allows updating a stored command by its key.
 
-- This is my first CLI based application and [Real Python's article](https://realpython.com/python-typer-cli/) helped with the same.
-- Built using [Typer](https://typer.tiangolo.com/)
-- Fuzzy Matching logic: [TheFuzz](https://github.com/seatgeek/thefuzz)
-- Printing in tabular format: [prettytable](https://github.com/jazzband/prettytable)
+### `cmds delete`
+
+Allows deletion of stored command by key
+
+**Usage**:
+
+```bash
+cmds delete [OPTIONS] [KEY]
+```
+
+**Arguments**:
+
+- `[KEY]`
+
+**Options**:
+
+- `-a, --all`: Delete all commands
+- `--help`: Show this message and exit.
+
+### `cmds export`
+
+Exports all stored commands into a JSON file.
+
+**Usage**:
+
+```bash
+cmds export [OPTIONS]
+```
+
+**Options**:
+
+- `-f, --file TEXT`: Export file address with extension  [default: command_storage_export_2024-02-28 19:37:47.575256.json]
+- `--help`: Show this message and exit.
+
+### `cmds init`
+
+Initialize the application. One time process and overwrites existing config and
+data files.
+
+Args:
+    db_path (str, optional): `--db-path` argument. Defaults to_INITIAL_DB_PATH.
+
+Raises:
+    typer.Exit: If error in app initialization
+    typer.Exit: if error in database file initialization
+
+**Usage**:
+
+```bash
+cmds init [OPTIONS]
+```
+
+**Options**:
+
+- `-db, --db-path TEXT`: [default: /Users/ashutosh/.ashutosh_cmds.json]
+- `--help`: Show this message and exit.
+
+### `cmds list`
+
+Show list of all stored commands. Also supports fuzzy matching on key. Run 'cmds
+list --help' to see how.
+
+**Usage**:
+
+```bash
+cmds list [OPTIONS]
+```
+
+**Options**:
+
+- `-k, --key TEXT`: Key for the command.
+- `--help`: Show this message and exit.
+
+### `cmds store`
+
+Store a new command into cmds by giving a helpful key name to refer to.
+
+**Usage**:
+
+```bash
+cmds store [OPTIONS]
+```
+
+**Options**:
+
+- `-k, --key TEXT`: Key for the command.  [required]
+- `-c, --command TEXT`: Command to be stored.  [required]
+- `-des, --description TEXT`: Description of command to be stored.
+- `--help`: Show this message and exit.
+
+### `cmds update`
+
+Allows updating a stored command by its key. Also supports changing the key.
+
+**Usage**:
+
+```bash
+cmds update [OPTIONS] ORIG_KEY
+```
+
+**Arguments**:
+
+- `ORIG_KEY`: [required]
+
+**Options**:
+
+- `-k, --key TEXT`: Key for the command.
+- `-c, --command TEXT`: Command to be stored.
+- `-des, --description TEXT`: Description of command to be stored.
+- `--help`: Show this message and exit.
+
+## Credits
+
+- This is my first CLI based application and [Real Python's
+  article](https://realpython.com/python-typer-cli/) helped a lot.
+- Built using [Typer](https://typer.tiangolo.com/).
+- Fuzzy Matching logic: [TheFuzz](https://github.com/seatgeek/thefuzz).
+- Printing in tabular format: [tabulate](https://github.com/astanin/python-tabulate).
