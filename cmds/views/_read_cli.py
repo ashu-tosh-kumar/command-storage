@@ -27,7 +27,8 @@ _INITIAL_FILE = typer.Option(
 
 @app.command()
 def list(key: str = _INITIAL_KEY) -> None:
-    """Show list of all stored commands or list of commands matching passed key."""
+    """Show list of all stored commands. Also supports fuzzy matching on key. Run 'cmds
+    list --help' to see how."""
     cmds = get_cmds()
 
     if key:

@@ -25,8 +25,8 @@ _INITIAL_DB_PATH = typer.Option(
 def init(
     db_path: str = _INITIAL_DB_PATH,
 ) -> None:
-    """Initialize the application. One time process but can be safely run multiple
-    times.
+    """Initialize the application. One time process and overwrites existing config and
+    data files.
 
     Args:
         db_path (str, optional): `--db-path` argument. Defaults to _INITIAL_DB_PATH.
