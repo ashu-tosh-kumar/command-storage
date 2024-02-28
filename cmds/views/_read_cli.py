@@ -5,9 +5,9 @@ import typer
 from prettytable.colortable import ColorTable, Themes
 
 from cmds.controller.app import get_cmds
+from cmds.initializer import app
 from cmds.models.enums import arguments as arguments_enums
 from cmds.models.enums import error as error_enums
-from cmds.views.cli import app
 
 DEFAULT_FILE_LOCATION = Path().joinpath(f"command_storage_export_{datetime.now()}.json")
 
