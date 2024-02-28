@@ -1,7 +1,7 @@
 # Python 3.11.3
 
 pre-commit==3.6.2
-pydantic==2.6.1
+pydantic==2.6.3
 pytest==8.0.2
 rich==13.7.0  # for colors in cli app
 shellingham==1.5.4  # for auto shell detection
