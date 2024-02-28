@@ -15,11 +15,4 @@ class Arguments(Enum):
     COMMAND = argument_model.Argument(short="-c", long="--command", type=str, description="Command to be stored.")
     DESCRIPTION = argument_model.Argument(short="-des", long="--description", type=str, description="Description of command to be stored.")
     FILE = argument_model.Argument(short="-f", long="--file", type=str, description="Export file address with extension")
-
-    UPDATE = argument_model.Argument(
-        short="-u",
-        long="--update",
-        type=str,
-        description="Update an existing command",
-    )
-    DELETE = argument_model.Argument(short="-d", long="--delete", type=str, description="Delete an existing command")
+    ALL = argument_model.Argument(short="-a", long="--all", type=str, description="Delete all commands")

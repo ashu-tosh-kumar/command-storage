@@ -134,6 +134,31 @@ class Cmds:
         commands = self._db_handler.write_commands(commands)
         return commands.error
 
+    def delete(self, key: Optional[str], delete_all: bool) -> error_enums.Error:
+        """Allows deleting a stored command by it's key
+
+        Args:
+            key (Optional[str]): Key that needs to be deleted
+            delete_all (bool): Whether to delete all items
+
+        Returns:
+            error_enums.Error: Returns error code of operation
+        """
+        # -- DELETE ALL DATA --
+        if delete_all:
+            empty_commands = db_models.Commands(commands={}, error=error_enums.Error.SUCCESS)
+            commands = self._db_handler.write_commands(empty_commands)
+            return commands.error
+
+        commands = self._db_handler.get_commands()
+
+        if key not in commands.commands:
+            return error_enums.Error.NON_EXISTENT_KEY_ERROR
+
+        commands.commands.pop(key)
+        commands = self._db_handler.write_commands(commands)
+        return commands.error
+
 
 def get_cmds() -> Cmds:
     """Returns an instance of `Cmds` with checks for various paths and config file(s).

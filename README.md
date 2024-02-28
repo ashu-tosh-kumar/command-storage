@@ -63,7 +63,9 @@ here from on top of my mind as moonshots.
 
 ### Delete Operations
 
-- Be able to delete a command by its key. `cmds --delete <key>`
+- Be able to delete a command by its key. `cmds delete <key>`. Also supports deleting
+  all data once: `cmds delete --all`. Passing at least one of key or `--all` is
+  mandatory.
 - (Interactive mode) Be able to select a command and delete it. `[TODO]`
 
 ### Credits

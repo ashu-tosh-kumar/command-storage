@@ -1,5 +1,3 @@
-from datetime import datetime
-from pathlib import Path
 from typing import Annotated
 
 import typer
@@ -8,8 +6,6 @@ from cmds.controller.cmds import get_cmds
 from cmds.models.enums import arguments as arguments_enums
 from cmds.models.enums import error as error_enums
 from cmds.views.cli import app
-
-DEFAULT_FILE_LOCATION = Path().joinpath(f"command_storage_export_{datetime.now()}.json")
 
 _INITIAL_NEW_KEY = typer.Option(
     None,
