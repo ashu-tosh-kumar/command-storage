@@ -35,7 +35,8 @@ here from on top of my mind as moonshots.
 ### Create Operations
 
 - Be able to store commands by giving them a helpful key name to refer to (description
-  is optional). `cmds store --key <key> --command <command> --description <description>`
+  is optional). `cmds store --key "<key>" --command "<command>" --description
+  "<description>"`
 - Be able to store parametrized commands so that a command can be passed arguments
   before running/viewing. `[TODO]`
 
@@ -43,8 +44,7 @@ here from on top of my mind as moonshots.
 
 - Get help. `cmds --help` or `cmds -h`
 - Be able to view all stored commands. `cmds list`.
-- Be able to view a command by its key. `cmds --list <key_name>` or `cmds
-  -l <key_name>` or `cmds <key_name>` (shortcut). It employs fuzzy matching.
+- Be able to view a command by its key. `cmds list --key "<key_name>"`.
 - Be able to export all/filtered commands into a file. `cmds --export <file_name>` or
   `cmds -e <file_name>`
 - (Interactive mode) Be able to copy selected command (with/without passing parameters).
@@ -69,3 +69,5 @@ here from on top of my mind as moonshots.
 ### Credits
 
 - This is my first CLI based application and [Real Python's article](https://realpython.com/python-typer-cli/) helped with the same.
+- Built using [Typer](https://typer.tiangolo.com/)
+- Fuzzy Matching logic: [TheFuzz](https://github.com/seatgeek/thefuzz)
