@@ -1,14 +1,14 @@
-"""RP To-Do entry point script."""
-
-# cmds/__main__.py
+"""Cmds entry point script."""
 
 from cmds import __app_name__
-from cmds.views import cli
+from cmds.views._create_cli import *  # noqa: F401 # NOSONAR
+from cmds.views._read_cli import *  # noqa: F401 # NOSONAR
+from cmds.views.cli import app
 
 
 def main() -> None:
     """Starting point of CLI application"""
-    cli.app(prog_name=__app_name__)
+    app(prog_name=__app_name__)
 
 
 if __name__ == "__main__":

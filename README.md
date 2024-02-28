@@ -1,11 +1,12 @@
 # command-storage
 
 - [command-storage](#command-storage)
+  - [Installation](#installation)
   - [How to Use? CRUD Operations](#how-to-use-crud-operations)
-    - [C](#c)
-    - [R](#r)
-    - [U](#u)
-    - [D](#d)
+    - [Create Operations](#create-operations)
+    - [Read Operations](#read-operations)
+    - [Update Operations](#update-operations)
+    - [Delete Operations](#delete-operations)
     - [Credits](#credits)
 
 A command line tool to store CLI commands for quick access and usage.
@@ -15,6 +16,10 @@ these are the commands I cant always remember or find useful to remember. Curren
 would store them into a file and then copy paste into the terminal for usage.
 
 So, it got me thinking of creating one simple CLI based tool to store such commands.
+
+## Installation
+
+Initialize the application: `cmds init`
 
 ## How to Use? CRUD Operations
 
@@ -27,21 +32,19 @@ here from on top of my mind as moonshots.
 - Key must be unique for each command. If you repeat the key, you would get a warning
   about the same.
 
-### C
+### Create Operations
 
 - Be able to store commands by giving them a helpful key name to refer to (description
-  is optional). `cmds --store <key> <command> <description>`
+  is optional). `cmds store --key <key> --command <command> --description <description>`
 - Be able to store parametrized commands so that a command can be passed arguments
   before running/viewing. `[TODO]`
 
-### R
+### Read Operations
 
 - Get help. `cmds --help` or `cmds -h`
-- Be able to view all stored commands. `cmds --view` or `cmds -v`
-- Be able to view a command by its key (exact match). `cmds --view <key_name>` or `cmds
-  -v <key_name>` or `cmds <key_name>` (shortcut)
-- Be able to filter commands using fuzzy search. Add `-f` or `--fuzzy` to previous
-  commands to view by key. Can also do `-vf` or `-fv`
+- Be able to view all stored commands. `cmds list`.
+- Be able to view a command by its key. `cmds --list <key_name>` or `cmds
+  -l <key_name>` or `cmds <key_name>` (shortcut). It employs fuzzy matching.
 - Be able to export all/filtered commands into a file. `cmds --export <file_name>` or
   `cmds -e <file_name>`
 - (Interactive mode) Be able to copy selected command (with/without passing parameters).
@@ -49,16 +52,16 @@ here from on top of my mind as moonshots.
 - (Interactive mode) Be able to run selected command (with/without passing parameters).
   `[TODO]`
 
-### U
+### Update Operations
 
 - Be able to update a command by its key (Both `--command` and `--description` are
   optional). `cmds --update <key> --command <command> --description <description>`
-- Be able to update the original key. `cmds --update --key <key_initial> <key_new>`. You
-  can mix it with previous command also `cmds --update --key <key_initial> <key_new>
+- Be able to update the original key. `cmds --update <key_initial> --key <key_new>`. You
+  can mix it with previous command also `cmds --update <key_initial> --key <key_new>
   --command <command> --description <description>`
 - (Interactive mode) Be able to select a command and update it. `[TODO]`
 
-### D
+### Delete Operations
 
 - Be able to delete a command by its key. `cmds --delete <key>`
 - (Interactive mode) Be able to select a command and delete it. `[TODO]`
