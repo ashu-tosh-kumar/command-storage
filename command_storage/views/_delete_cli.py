@@ -42,7 +42,7 @@ def delete(key: Optional[str] = typer.Argument(None), delete_all: bool = _INITIA
     _validate_delete_options(key, delete_all)
 
     if delete_all and not _confirm_delete_all():
-        typer.echo("Aborted. No data has been deleted.")
+        typer.secho("Aborted. No data has been deleted.", fg=typer.colors.CYAN)
         return
 
     cmds = get_cmds()

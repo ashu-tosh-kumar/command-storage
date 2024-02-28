@@ -74,8 +74,10 @@ def _version_callback(value: bool) -> None:
         typer.Exit: Raised to cleanly exit the CLI application
     """
     if value:
-        typer.echo(f"{APP_NAME} v{VERSION}")
+        typer.secho(f"{APP_NAME} v{VERSION}", fg=typer.colors.CYAN)
         raise typer.Exit()
+
+    typer.secho("Welcome to command-storage. Run 'cmds --help' to get help.", fg=typer.colors.CYAN)
 
 
 _INITIAL_VERSION = typer.Option(
@@ -88,7 +90,7 @@ _INITIAL_VERSION = typer.Option(
 )
 
 
-@app.callback()
+@app.callback(invoke_without_command=True)
 def version(version: Optional[bool] = _INITIAL_VERSION) -> None:
     pass
 
