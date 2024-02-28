@@ -2,10 +2,10 @@ from typing import Optional
 
 import typer
 
-from cmds.controller.app import get_cmds
-from cmds.initializer import app
-from cmds.models.enums import arguments as arguments_enums
-from cmds.models.enums import error as error_enums
+from command_storage.controller.app import get_cmds
+from command_storage.initializer import app
+from command_storage.models.enums import arguments as arguments_enums
+from command_storage.models.enums import error as error_enums
 
 _INITIAL_DELETE_ALL = typer.Option(
     False,

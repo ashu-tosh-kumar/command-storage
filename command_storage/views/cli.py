@@ -5,16 +5,19 @@ from typing import Optional
 
 import typer
 
-from cmds.controller import config
-from cmds.initializer import app
-from cmds.models.constants import APP_NAME, VERSION
-from cmds.models.database.json_wrapper import DEFAULT_DB_FILE_PATH, init_database
-from cmds.models.enums import arguments as arguments_enums
-from cmds.models.enums import error as error_enums
-from cmds.views._create_cli import *  # noqa: F401 # NOSONAR
-from cmds.views._delete_cli import *  # noqa: F401 # NOSONAR
-from cmds.views._read_cli import *  # noqa: F401 # NOSONAR
-from cmds.views._update_cli import *  # noqa: F401 # NOSONAR
+from command_storage.controller import config
+from command_storage.initializer import app
+from command_storage.models.constants import APP_NAME, VERSION
+from command_storage.models.database.json_wrapper import (
+    DEFAULT_DB_FILE_PATH,
+    init_database,
+)
+from command_storage.models.enums import arguments as arguments_enums
+from command_storage.models.enums import error as error_enums
+from command_storage.views._create_cli import *  # noqa: F401 # NOSONAR
+from command_storage.views._delete_cli import *  # noqa: F401 # NOSONAR
+from command_storage.views._read_cli import *  # noqa: F401 # NOSONAR
+from command_storage.views._update_cli import *  # noqa: F401 # NOSONAR
 
 _INITIAL_DB_PATH = typer.Option(
     str(DEFAULT_DB_FILE_PATH),

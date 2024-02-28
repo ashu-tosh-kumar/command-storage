@@ -2,7 +2,7 @@ from typing import Optional, Union
 
 from pydantic import BaseModel, field_serializer, validator
 
-from cmds.models.enums import error as error_enums
+from command_storage.models.enums import error as error_enums
 
 
 class Command(BaseModel):

@@ -1,6 +1,6 @@
 from enum import Enum
 
-from cmds.models.models import error as error_model
+from command_storage.models.models import error as error_model
 
 
 class Error(Enum):

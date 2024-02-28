@@ -2,9 +2,9 @@ import configparser
 import json
 from pathlib import Path
 
-from cmds.models.database import db_models
-from cmds.models.enums import error as error_enums
-from cmds.models.enums import error as error_model
+from command_storage.models.database import db_models
+from command_storage.models.enums import error as error_enums
+from command_storage.models.enums import error as error_model
 
 DEFAULT_DB_FILE_PATH = Path.home().joinpath("." + Path.home().stem + "_cmds.json")
 

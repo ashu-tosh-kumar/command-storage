@@ -3,7 +3,7 @@
 
 from enum import Enum
 
-from cmds.models.models import argument as argument_model
+from command_storage.models.models import argument as argument_model
 
 
 class Arguments(Enum):

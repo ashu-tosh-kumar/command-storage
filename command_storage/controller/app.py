@@ -5,10 +5,10 @@ from typing import Optional
 import typer
 from thefuzz import process
 
-from cmds.controller import config
-from cmds.models.database import db_models
-from cmds.models.database.json_wrapper import JsonWrapper, get_database_path
-from cmds.models.enums import error as error_enums
+from command_storage.controller import config
+from command_storage.models.database import db_models
+from command_storage.models.database.json_wrapper import JsonWrapper, get_database_path
+from command_storage.models.enums import error as error_enums
 
 
 class Cmds:

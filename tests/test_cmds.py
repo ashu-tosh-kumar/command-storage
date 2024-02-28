@@ -3,8 +3,8 @@
 import pytest
 from typer.testing import CliRunner
 
-from cmds.models.constants import APP_NAME, VERSION
-from cmds.views import cli
+from command_storage.models.constants import APP_NAME, VERSION
+from command_storage.views import cli
 
 runner = CliRunner()
 
