@@ -73,3 +73,4 @@ here from on top of my mind as moonshots.
 - This is my first CLI based application and [Real Python's article](https://realpython.com/python-typer-cli/) helped with the same.
 - Built using [Typer](https://typer.tiangolo.com/)
 - Fuzzy Matching logic: [TheFuzz](https://github.com/seatgeek/thefuzz)
+- Printing in tabular format: [prettytable](https://github.com/jazzband/prettytable)

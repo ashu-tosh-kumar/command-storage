@@ -3,10 +3,10 @@ from pathlib import Path
 
 import typer
 
-from cmds import __app_name__
+from cmds.models.constants import APP_NAME
 from cmds.models.enums import error as error_enums
 
-CONFIG_DIR_PATH = Path(typer.get_app_dir(__app_name__))
+CONFIG_DIR_PATH = Path(typer.get_app_dir(APP_NAME))
 CONFIG_FILE_PATH = CONFIG_DIR_PATH / "config.ini"
 
 

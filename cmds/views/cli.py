@@ -5,8 +5,8 @@ from typing import Optional
 
 import typer
 
-from cmds import __app_name__, __version__
 from cmds.controller import config
+from cmds.models.constants import APP_NAME, VERSION
 from cmds.models.database.json_wrapper import DEFAULT_DB_FILE_PATH, init_database
 from cmds.models.enums import arguments as arguments_enums
 from cmds.models.enums import error as error_enums
@@ -68,7 +68,7 @@ def _version_callback(value: bool) -> None:
         typer.Exit: Raised to cleanly exit the CLI application
     """
     if value:
-        typer.echo(f"{__app_name__} v{__version__}")
+        typer.echo(f"{APP_NAME} v{VERSION}")
         raise typer.Exit()
 
 
