@@ -1,13 +1,24 @@
 from typing import Optional
 
 import typer
-from typing_extensions import Annotated
 
-from cmds.controller.cmds import get_cmds
+from cmds.controller.app import get_cmds
 from cmds.models.enums import arguments as arguments_enums
 from cmds.models.enums import error as error_enums
 from cmds.views.cli import app
 
+_INITIAL_KEY = typer.Option(
+    ...,
+    arguments_enums.Arguments.KEY.value.long,
+    arguments_enums.Arguments.KEY.value.short,
+    help=arguments_enums.Arguments.KEY.value.description,
+)
+_INITIAL_COMMAND = typer.Option(
+    ...,
+    arguments_enums.Arguments.COMMAND.value.long,
+    arguments_enums.Arguments.COMMAND.value.short,
+    help=arguments_enums.Arguments.COMMAND.value.description,
+)
 _INITIAL_DESCRIPTION = typer.Option(
     None,
     arguments_enums.Arguments.DESCRIPTION.value.long,
@@ -18,22 +29,8 @@ _INITIAL_DESCRIPTION = typer.Option(
 
 @app.command()
 def store(
-    key: Annotated[
-        str,
-        typer.Option(
-            arguments_enums.Arguments.KEY.value.long,
-            arguments_enums.Arguments.KEY.value.short,
-            help=arguments_enums.Arguments.KEY.value.description,
-        ),
-    ],
-    command: Annotated[
-        str,
-        typer.Option(
-            arguments_enums.Arguments.COMMAND.value.long,
-            arguments_enums.Arguments.COMMAND.value.short,
-            help=arguments_enums.Arguments.COMMAND.value.description,
-        ),
-    ],
+    key: str = _INITIAL_KEY,
+    command: str = _INITIAL_COMMAND,
     description: Optional[str] = _INITIAL_DESCRIPTION,
 ) -> None:
     """Store a new command into cmds."""
