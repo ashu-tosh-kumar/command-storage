@@ -68,7 +68,7 @@ class Cmds:
         commands = self._db_handler.get_commands()
 
         if key in commands.commands:
-            return db_models.Commands(commands={}, error=error_enums.Error.KEY_ERROR)
+            return db_models.Commands(commands={}, error=error_enums.Error.DUPLICATE_KEY_ERROR)
 
         new_command = db_models.Command(key=key, command=command, description=description)
 
@@ -95,6 +95,44 @@ class Cmds:
                 return error_enums.Error.SUCCESS
         except OSError:  # Catch file IO problems
             return error_enums.Error.JSON_EXPORT_FILE_ERROR
+
+    def update(self, orig_key: str, new_key: Optional[str], command: Optional[str], description: Optional[str]) -> error_enums.Error:
+        """Allows updating an existing command including (optionally) its key
+
+        Args:
+            orig_key (str): Key for which update needs to happen
+            new_key (Optional[str]): New key if key needs to be changed
+            command (Optional[str]): New command
+            description (Optional[str]): New description
+
+        Returns:
+            error_enums.Error: Returns error code of the operation
+        """
+        commands = self._db_handler.get_commands()
+
+        if orig_key not in commands.commands:
+            return error_enums.Error.NON_EXISTENT_KEY_ERROR
+
+        command_obj = commands.commands[orig_key]
+
+        # Update command
+        if command is not None:
+            command_obj.command = command
+
+        # Update description
+        if description is not None:
+            command_obj.description = description
+
+        # Update the key
+        if new_key is not None:
+            # insert new key and remove old one
+            commands.commands.pop(orig_key)
+            commands.commands[new_key] = command_obj
+        else:
+            commands.commands[orig_key] = command_obj
+
+        commands = self._db_handler.write_commands(commands)
+        return commands.error
 
 
 def get_cmds() -> Cmds:

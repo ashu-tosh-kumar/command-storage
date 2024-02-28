@@ -17,7 +17,7 @@ class Commands(BaseModel):
     """Model for the whole database to store all commands"""
 
     commands: dict[str, Command]
-    error: Union[error_enums.Error, int]
+    error: error_enums.Error
 
     @field_serializer("error")
     def serialize_dt(self, error: Union[error_enums.Error, int], _info) -> int:

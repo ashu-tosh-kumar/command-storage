@@ -55,7 +55,7 @@ def list(key: str = _INITIAL_KEY) -> None:
     for idx, (key, command) in enumerate(all_commands.commands.items()):
         _command = command.command
         description = command.description
-        table.add_row([idx + 1, key, _command, description])
+        table.add_row([idx + 1, f"'{key}'", f"'{_command}'", f"'{description}'" if description else ""])
 
     typer.secho(table)
 
@@ -79,11 +79,11 @@ def export(file: str = _INITIAL_FILE) -> None:
 
     if export_error == error_enums.Error.SUCCESS:
         typer.secho(
-            f'Successfully exported file to path: {file}: "{export_error}"',
+            f"Successfully exported file to path: {file}: '{export_error}'",
             fg=typer.colors.GREEN,
         )
     else:
         typer.secho(
-            f'Exporting file to path: {file} failed with "{export_error}"',
+            f"Exporting file to path: {file} failed with '{export_error}'",
             fg=typer.colors.RED,
         )

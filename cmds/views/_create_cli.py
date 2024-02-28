@@ -42,12 +42,12 @@ def store(
 
     if commands.error != error_enums.Error.SUCCESS:
         typer.secho(
-            message=f'Error in storing the command "{commands.error}"',
+            message=f"Error in storing the command '{commands.error}'",
             fg=typer.colors.RED,
         )
         raise typer.Exit(1)
 
     typer.secho(
-        message=f'Successfully stored the new command: "{commands.error}"',
+        message=f"Successfully stored the new command: '{commands.error}'",
         fg=typer.colors.GREEN,
     )

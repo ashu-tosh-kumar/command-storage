@@ -11,7 +11,8 @@ class Error(Enum):
     DB_WRITE_ERROR = error_model.Error(code=4, name="DB_WRITE_ERROR", description="database write error")
     JSON_ERROR = error_model.Error(code=5, name="JSON_ERROR", description="database file corruption")
     JSON_EXPORT_FILE_ERROR = error_model.Error(code=6, name="JSON_ERROR", description="issue with exporting file data")
-    KEY_ERROR = error_model.Error(code=7, name="KEY_ERROR", description="Duplicate key issue")
+    DUPLICATE_KEY_ERROR = error_model.Error(code=7, name="DUPLICATE_KEY_ERROR", description="Duplicate key issue")
+    NON_EXISTENT_KEY_ERROR = error_model.Error(code=7, name="NON_EXISTENT_KEY_ERROR", description="key doesn't exist in database")
 
     def __str__(self) -> str:
         """User friendly print output

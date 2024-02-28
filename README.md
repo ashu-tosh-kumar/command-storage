@@ -55,9 +55,9 @@ here from on top of my mind as moonshots.
 ### Update Operations
 
 - Be able to update a command by its key (Both `--command` and `--description` are
-  optional). `cmds --update <key> --command <command> --description <description>`
-- Be able to update the original key. `cmds --update <key_initial> --key <key_new>`. You
-  can mix it with previous command also `cmds --update <key_initial> --key <key_new>
+  optional). `cmds update <key_initial> --command <command> --description <description>`
+- Be able to update the original key. `cmds update <key_initial> --key <key_new>`. You
+  can mix it with previous command also `cmds update <key_initial> --key <key_new>
   --command <command> --description <description>`
 - (Interactive mode) Be able to select a command and update it. `[TODO]`
 

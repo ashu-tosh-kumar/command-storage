@@ -41,7 +41,7 @@ def init(
     app_init_error = config.initialize_app(db_path_obj)
     if app_init_error != error_enums.Error.SUCCESS:
         typer.secho(
-            f'Creating config file failed with "{app_init_error}"',
+            f"Creating config file failed with '{app_init_error}'",
             fg=typer.colors.RED,
         )
         raise typer.Exit(1)
@@ -50,7 +50,7 @@ def init(
     db_init_error = init_database(Path(db_path_obj))
     if db_init_error != error_enums.Error.SUCCESS:
         typer.secho(
-            f'Creating database failed with "{db_init_error}"',
+            f"Creating database failed with '{db_init_error}'",
             fg=typer.colors.RED,
         )
         raise typer.Exit(1)

@@ -3,6 +3,7 @@
 from cmds import __app_name__
 from cmds.views._create_cli import *  # noqa: F401 # NOSONAR
 from cmds.views._read_cli import *  # noqa: F401 # NOSONAR
+from cmds.views._update_cli import *  # noqa: F401 # NOSONAR
 from cmds.views.cli import app
 
 
