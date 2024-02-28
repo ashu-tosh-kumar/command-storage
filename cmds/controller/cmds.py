@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 from typing import Optional
 
@@ -75,6 +76,25 @@ class Cmds:
         commands = self._db_handler.write_commands(commands)
 
         return commands
+
+    def export_json(self, all_commands: db_models.Commands, export_file: str) -> error_enums.Error:
+        """Exports the json data into given export file
+
+        Args:
+            all_commands (db_models.Commands): Json data that needs to be exported
+            export_file (str): File into which data needs to be exported
+
+        Returns:
+            error_enums.Error: Returns error code of the operation
+        """
+        try:
+            json_data = [command.model_dump() for command in all_commands.commands.values()]
+
+            with Path(export_file).open("w") as f:
+                json.dump(json_data, f, indent=4)
+                return error_enums.Error.SUCCESS
+        except OSError:  # Catch file IO problems
+            return error_enums.Error.JSON_EXPORT_FILE_ERROR
 
 
 def get_cmds() -> Cmds:

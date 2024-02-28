@@ -10,7 +10,8 @@ class Error(Enum):
     DB_READ_ERROR = error_model.Error(code=3, name="DB_READ_ERROR", description="database read error")
     DB_WRITE_ERROR = error_model.Error(code=4, name="DB_WRITE_ERROR", description="database write error")
     JSON_ERROR = error_model.Error(code=5, name="JSON_ERROR", description="database file corruption")
-    KEY_ERROR = error_model.Error(code=6, name="KEY_ERROR", description="Duplicate key issue")
+    JSON_EXPORT_FILE_ERROR = error_model.Error(code=6, name="JSON_ERROR", description="issue with exporting file data")
+    KEY_ERROR = error_model.Error(code=7, name="KEY_ERROR", description="Duplicate key issue")
 
     def __str__(self) -> str:
         """User friendly print output
