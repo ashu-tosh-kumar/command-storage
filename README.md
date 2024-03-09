@@ -12,6 +12,7 @@
     - [`cmds list`](#cmds-list)
     - [`cmds store`](#cmds-store)
     - [`cmds update`](#cmds-update)
+  - [Release History](#release-history)
   - [Credits](#credits)
 
 ## About
@@ -198,6 +199,12 @@ cmds update [OPTIONS] ORIG_KEY
 - `-c, --command TEXT`: Command to be stored.
 - `-des, --description TEXT`: Description of command to be stored.
 - `--help`: Show this message and exit.
+
+## Release History
+
+`0.1.0` - First working release (built using Python 3.11)
+
+`0.1.1` - Lowered Python version requirement to 3.9. Added support to be installable via multiple package managers.
 
 ## Credits
 

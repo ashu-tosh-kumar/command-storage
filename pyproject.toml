@@ -32,7 +32,7 @@ integration = "marks tests as integration (deselect with '-m \"not integration\"
 
 [tool.poetry]
 name = "command-storage"
-version = "0.1.0"
+version = "0.1.1"
 description = "A command line tool to store CLI commands for quick access and usage."
 authors = ["Ashutosh <37182127+ashu-tosh-kumar@users.noreply.github.com>"]
 readme = "README.md"
