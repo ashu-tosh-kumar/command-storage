@@ -142,7 +142,7 @@ cmds init [OPTIONS]
 
 **Options**:
 
-- `-db, --db-path TEXT`: [default: /Users/ashutosh/.ashutosh_cmds.json]
+- `-db, --db-path TEXT`: [default: <home_path>.<home_path_name>_cmds.json]
 - `--help`: Show this message and exit.
 
 ### `cmds list`

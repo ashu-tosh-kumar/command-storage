@@ -41,7 +41,7 @@ readme = "README.md"
 cmds = "command_storage.views.cli:app"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.9"
 typer = { extras = ["all"], version = "^0.9.0" }
 pydantic = "^2.6.3"
 shellingham = "^1.5.4"
