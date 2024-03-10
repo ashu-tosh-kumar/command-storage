@@ -39,10 +39,22 @@ You can find the project on [pip](https://pypi.org/project/command-storage/).
 
 ## Installation
 
-- Using pip: `pip install command-storage`
-- Initialize the application by running `cmds init`. Note that if you want to have cross
-  platform sync of data, you can choose location of file to be inside a drive installed
-  on your system like Onedrive.
+Using pip
+
+```bash
+pip install command-storage
+```
+
+Using brew:
+  
+```bash
+brew tap ashu-tosh-kumar/command-storage
+brew install command-storage
+```
+
+**NOTE**: Initialize the application by running `cmds init`. Note that if you want to have
+cross platform sync of data, you can choose location of file to be inside a drive
+installed on your system like Onedrive.
 
 ## Examples
 
