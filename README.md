@@ -39,13 +39,13 @@ You can find the project on [pip](https://pypi.org/project/command-storage/).
 
 ## Installation
 
-Using pip
+Using pip.
 
 ```bash
 pip install command-storage
 ```
 
-Using brew:
+Using brew. Gem file maintained in repository [homebrew-command-storage](https://github.com/ashu-tosh-kumar/homebrew-command-storage).
   
 ```bash
 brew tap ashu-tosh-kumar/command-storage
