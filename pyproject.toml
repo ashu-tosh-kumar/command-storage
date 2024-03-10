@@ -32,7 +32,7 @@ integration = "marks tests as integration (deselect with '-m \"not integration\"
 
 [tool.poetry]
 name = "command-storage"
-version = "0.1.0"
+version = "0.1.1"
 description = "A command line tool to store CLI commands for quick access and usage."
 authors = ["Ashutosh <37182127+ashu-tosh-kumar@users.noreply.github.com>"]
 readme = "README.md"
@@ -41,7 +41,7 @@ readme = "README.md"
 cmds = "command_storage.views.cli:app"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.9"
 typer = { extras = ["all"], version = "^0.9.0" }
 pydantic = "^2.6.3"
 shellingham = "^1.5.4"
@@ -52,6 +52,9 @@ thefuzz = "^0.22.1"
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.6.2"
 pytest = "^8.0.2"
+black = "^24.2.0"
+flake8 = "^7.0.0"
+isort = "^5.13.2"
 
 [build-system]
 requires = ["poetry-core"]

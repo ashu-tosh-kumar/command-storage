@@ -12,6 +12,7 @@
     - [`cmds list`](#cmds-list)
     - [`cmds store`](#cmds-store)
     - [`cmds update`](#cmds-update)
+  - [Release History](#release-history)
   - [Credits](#credits)
 
 ## About
@@ -38,10 +39,22 @@ You can find the project on [pip](https://pypi.org/project/command-storage/).
 
 ## Installation
 
-- Using pip: `pip install command-storage`
-- Initialize the application by running `cmds init`. Note that if you want to have cross
-  platform sync of data, you can choose location of file to be inside a drive installed
-  on your system like Onedrive.
+Using pip.
+
+```bash
+pip install command-storage
+```
+
+Using brew. Gem file maintained in repository [homebrew-command-storage](https://github.com/ashu-tosh-kumar/homebrew-command-storage).
+  
+```bash
+brew tap ashu-tosh-kumar/command-storage
+brew install command-storage
+```
+
+**NOTE**: Initialize the application by running `cmds init`. Note that if you want to have
+cross platform sync of data, you can choose location of file to be inside a drive
+installed on your system like Onedrive.
 
 ## Examples
 
@@ -142,7 +155,7 @@ cmds init [OPTIONS]
 
 **Options**:
 
-- `-db, --db-path TEXT`: [default: /Users/ashutosh/.ashutosh_cmds.json]
+- `-db, --db-path TEXT`: [default: <home_path>.<home_path_name>_cmds.json]
 - `--help`: Show this message and exit.
 
 ### `cmds list`
@@ -198,6 +211,12 @@ cmds update [OPTIONS] ORIG_KEY
 - `-c, --command TEXT`: Command to be stored.
 - `-des, --description TEXT`: Description of command to be stored.
 - `--help`: Show this message and exit.
+
+## Release History
+
+`0.1.0` - First working release (built using Python 3.11)
+
+`0.1.1` - Lowered Python version requirement to 3.9. Added support to be installable via multiple package managers.
 
 ## Credits
 
