@@ -1,6 +1,6 @@
-# command-storage [WIP]
+# command-storage
 
-- [command-storage \[WIP\]](#command-storage-wip)
+- [command-storage](#command-storage)
   - [About](#about)
   - [Features](#features)
   - [Installation](#installation)
@@ -50,6 +50,12 @@ Using brew. Gem file maintained in repository [homebrew-command-storage](https:/
 ```bash
 brew tap ashu-tosh-kumar/command-storage
 brew install command-storage
+```
+
+Using [pipx](https://pipx.pypa.io/stable/).
+
+```bash
+pipx install command-storage
 ```
 
 **NOTE**: Initialize the application by running `cmds init`. Note that if you want to have
