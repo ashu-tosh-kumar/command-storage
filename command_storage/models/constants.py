@@ -1,2 +1,2 @@
 APP_NAME: str = "cmds"
-VERSION: str = "0.1.0"
+VERSION: str = "0.1.1"
