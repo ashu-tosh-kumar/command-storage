@@ -1,6 +1,6 @@
-# command-storage [WIP]
+# command-storage
 
-- [command-storage \[WIP\]](#command-storage-wip)
+- [command-storage](#command-storage)
   - [About](#about)
   - [Features](#features)
   - [Installation](#installation)
@@ -39,17 +39,23 @@ You can find the project on [pip](https://pypi.org/project/command-storage/).
 
 ## Installation
 
-Using pip.
+Using [pip](https://pypi.org/project/command-storage/).
 
 ```bash
 pip install command-storage
 ```
 
-Using brew. Gem file maintained in repository [homebrew-command-storage](https://github.com/ashu-tosh-kumar/homebrew-command-storage).
+Using [brew](https://brew.sh/). Gem file maintained in repository [homebrew-command-storage](https://github.com/ashu-tosh-kumar/homebrew-command-storage).
   
 ```bash
 brew tap ashu-tosh-kumar/command-storage
 brew install command-storage
+```
+
+Using [pipx](https://pipx.pypa.io/stable/).
+
+```bash
+pipx install command-storage
 ```
 
 **NOTE**: Initialize the application by running `cmds init`. Note that if you want to have
