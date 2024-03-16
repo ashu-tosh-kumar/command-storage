@@ -81,7 +81,7 @@ def list(key: Optional[str] = _INITIAL_KEY, limit: int = _INITIAL_LIMIT) -> None
 def export(file: str = _INITIAL_FILE) -> None:
     """Exports all stored commands into a JSON file."""
     cmds = get_cmds()
-    all_commands = cmds.list()
+    all_commands = cmds.list(0)
 
     if all_commands.error != error_enums.Error.SUCCESS:
         typer.secho(f"Error in fetching commands: '{all_commands.error}'", fg=typer.colors.RED)
