@@ -143,8 +143,8 @@ cmds export [OPTIONS]
 
 ### `cmds init`
 
-Initialize the application. One time process and overwrites existing config and
-data files.
+Initialize the application. One time process and uses existing config and
+data files if available.
 
 Args:
     db_path (str, optional): `--db-path` argument. Defaults to_INITIAL_DB_PATH.
