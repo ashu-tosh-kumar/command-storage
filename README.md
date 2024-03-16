@@ -181,7 +181,8 @@ cmds list [OPTIONS] [KEY]
 
 **Options**:
 
-- `-l, --limit INTEGER`: Number of results to show.  [default: 5]
+- `-l, --limit INTEGER`: Number of results to show. 0 means all results.  [default: 5]
+
 - `--help`: Show this message and exit.
 
 ### `cmds store`
