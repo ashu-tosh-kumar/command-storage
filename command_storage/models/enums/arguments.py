@@ -16,3 +16,4 @@ class Arguments(Enum):
     DESCRIPTION = argument_model.Argument(short="-des", long="--description", type=str, description="Description of command to be stored.")
     FILE = argument_model.Argument(short="-f", long="--file", type=str, description="Export file address with extension")
     ALL = argument_model.Argument(short="-a", long="--all", type=str, description="Delete all commands")
+    LIMIT = argument_model.Argument(short="-l", long="--limit", type=str, description="Number of results to show.")

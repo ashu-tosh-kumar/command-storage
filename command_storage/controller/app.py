@@ -23,22 +23,34 @@ class Cmds:
         """
         self._db_handler = JsonWrapper(db_path)
 
-    def list(self) -> db_models.Commands:
+    def list(self, limit: int) -> db_models.Commands:
         """Interface to get list of all stored commands from database
+
+        Args:
+            limit (int): Maximum no. of records to return.
 
         Returns:
             db_models.Commands: Returns all commands model
         """
         commands = self._db_handler.get_commands()
 
-        return commands
+        commands_temp = {}
+        idx = 0
+        for key, value in commands.commands.items():
+            commands_temp[key] = value
+            idx += 1
+            if idx == limit:
+                break
+        filter_commands = db_models.Commands(commands=commands_temp, error=commands.error)
 
-    def list_fuzzy(self, key: str, limit: int = 5) -> db_models.Commands:
+        return filter_commands
+
+    def list_fuzzy(self, key: str, limit: int) -> db_models.Commands:
         """Interface to get list of all stored commands from database
 
         Args:
             key (str): Key for fuzzy matching.
-            limit (int, optional): Maximum no. of records to return. Defaults to 5.
+            limit (int): Maximum no. of records to return.
 
         Returns:
             db_models.Commands: Returns all commands model.

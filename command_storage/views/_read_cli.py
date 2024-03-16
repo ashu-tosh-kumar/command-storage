@@ -8,6 +8,7 @@ from tabulate import tabulate
 
 from command_storage.controller.app import get_cmds
 from command_storage.initializer import app
+from command_storage.models.constants import DEFAULT_LIST_LIMIT
 from command_storage.models.enums import arguments as arguments_enums
 from command_storage.models.enums import error as error_enums
 
@@ -16,6 +17,12 @@ DEFAULT_FILE_LOCATION = Path().joinpath(f"command_storage_export_{datetime.now()
 _INITIAL_KEY = typer.Argument(
     None,
     help=arguments_enums.Arguments.KEY.value.description,
+)
+_INITIAL_LIMIT = typer.Option(
+    DEFAULT_LIST_LIMIT,
+    arguments_enums.Arguments.LIMIT.value.long,
+    arguments_enums.Arguments.LIMIT.value.short,
+    help=arguments_enums.Arguments.LIMIT.value.description,
 )
 _INITIAL_FILE = typer.Option(
     DEFAULT_FILE_LOCATION,
@@ -26,15 +33,15 @@ _INITIAL_FILE = typer.Option(
 
 
 @app.command()
-def list(key: Optional[str] = _INITIAL_KEY) -> None:
+def list(key: Optional[str] = _INITIAL_KEY, limit: int = _INITIAL_LIMIT) -> None:
     """Show list of all stored commands. Also supports fuzzy matching on key. Run 'cmds
     list --help' to see how."""
     cmds = get_cmds()
 
     if key:
-        all_commands = cmds.list_fuzzy(key)
+        all_commands = cmds.list_fuzzy(key, limit)
     else:
-        all_commands = cmds.list()
+        all_commands = cmds.list(limit)
 
     if all_commands.error != error_enums.Error.SUCCESS:
         typer.secho(f"Error in fetching commands: '{all_commands.error}'", fg=typer.colors.RED)

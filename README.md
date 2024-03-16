@@ -172,16 +172,16 @@ list --help' to see how.
 **Usage**:
 
 ```bash
-cmds list [OPTIONS]
+cmds list [OPTIONS] [KEY]
 ```
 
 **Arguments**:
 
 - `[KEY]`: Key for the command.
--
 
 **Options**:
 
+- `-l, --limit INTEGER`: Number of results to show.  [default: 5]
 - `--help`: Show this message and exit.
 
 ### `cmds store`
