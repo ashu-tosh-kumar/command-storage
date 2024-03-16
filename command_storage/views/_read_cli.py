@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
 import typer
 from tabulate import tabulate
@@ -12,10 +13,8 @@ from command_storage.models.enums import error as error_enums
 
 DEFAULT_FILE_LOCATION = Path().joinpath(f"command_storage_export_{datetime.now()}.json")
 
-_INITIAL_KEY = typer.Option(
+_INITIAL_KEY = typer.Argument(
     None,
-    arguments_enums.Arguments.KEY.value.long,
-    arguments_enums.Arguments.KEY.value.short,
     help=arguments_enums.Arguments.KEY.value.description,
 )
 _INITIAL_FILE = typer.Option(
@@ -27,7 +26,7 @@ _INITIAL_FILE = typer.Option(
 
 
 @app.command()
-def list(key: str = _INITIAL_KEY) -> None:
+def list(key: Optional[str] = _INITIAL_KEY) -> None:
     """Show list of all stored commands. Also supports fuzzy matching on key. Run 'cmds
     list --help' to see how."""
     cmds = get_cmds()

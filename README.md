@@ -175,9 +175,13 @@ list --help' to see how.
 cmds list [OPTIONS]
 ```
 
+**Arguments**:
+
+- `[KEY]`: Key for the command.
+-
+
 **Options**:
 
-- `-k, --key TEXT`: Key for the command.
 - `--help`: Show this message and exit.
 
 ### `cmds store`
@@ -231,3 +235,6 @@ cmds update [OPTIONS] ORIG_KEY
 - Built with ❤️ using [Typer](https://typer.tiangolo.com/).
 - Fuzzy Matching logic: [TheFuzz](https://github.com/seatgeek/thefuzz).
 - Printing in tabular format: [tabulate](https://github.com/astanin/python-tabulate)
+- CLI usage documentation generated using
+  [typer-cli](https://typer.tiangolo.com/typer-cli/) command: `typer
+  command_storage.views.cli utils docs`.
