@@ -244,9 +244,25 @@ cmds update [OPTIONS] ORIG_KEY
 
 ## Release History
 
-`0.1.0` - First working release (built using Python 3.11)
+`0.1.0`
 
-`0.1.1` - Lowered Python version requirement to 3.9. Added support to be installable via multiple package managers.
+- First working release (built using Python 3.11).
+
+`0.1.1`
+
+- Lowered Python version requirement to 3.9. Added support to be installable via
+multiple package managers.
+
+`0.1.2`
+
+- `list` command uses `key` as argument instead of option for wider app
+consistency.
+- `list` command supports passing `--limit` option to limit no. of search results. Works
+  for both with and without fuzzy search.
+- Added `copy` command to allow copying a command by its key.
+- Added a probability threshold for fuzzy search in `list` command. This helps in
+  returning only meaningful matches.
+- **[BUG FIX]** Fixed `init` command overwriting existing database file.
 
 ## Credits
 
