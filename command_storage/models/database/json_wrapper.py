@@ -19,7 +19,10 @@ def init_database(db_path: Path) -> error_model.Error:
         error_model.Error: Returns error code
     """
     try:
-        db_path.write_text("{}")  # Empty cmds dictionary
+        try:
+            json.loads(db_path.read_text())  # don't write if exists already
+        except json.JSONDecodeError:
+            db_path.write_text("{}")  # Empty cmds dictionary
         return error_model.Error.SUCCESS
     except OSError:
         return error_model.Error.DB_WRITE_ERROR

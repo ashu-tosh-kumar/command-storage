@@ -1,2 +1,4 @@
 APP_NAME: str = "cmds"
-VERSION: str = "0.1.1"
+VERSION: str = "0.1.2"
+FUZZY_SEARCH_THRESHOLD = 70
+DEFAULT_LIST_LIMIT = 5

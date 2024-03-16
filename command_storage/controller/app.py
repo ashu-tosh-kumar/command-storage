@@ -6,6 +6,7 @@ import typer
 from thefuzz import process
 
 from command_storage.controller import config
+from command_storage.models.constants import FUZZY_SEARCH_THRESHOLD
 from command_storage.models.database import db_models
 from command_storage.models.database.json_wrapper import JsonWrapper, get_database_path
 from command_storage.models.enums import error as error_enums
@@ -22,22 +23,38 @@ class Cmds:
         """
         self._db_handler = JsonWrapper(db_path)
 
-    def list(self) -> db_models.Commands:
+    def list(self, limit: int) -> db_models.Commands:
         """Interface to get list of all stored commands from database
+
+        Args:
+            limit (int): Maximum no. of records to return. If `0`, then no filtering and
+            returns all results.
 
         Returns:
             db_models.Commands: Returns all commands model
         """
         commands = self._db_handler.get_commands()
 
+        if limit > 0:
+            commands_temp = {}
+            idx = 0
+            for key, value in commands.commands.items():
+                commands_temp[key] = value
+                idx += 1
+                if idx == limit:
+                    break
+            filter_commands = db_models.Commands(commands=commands_temp, error=commands.error)
+            return filter_commands
+
         return commands
 
-    def list_fuzzy(self, key: str, limit: int = 5) -> db_models.Commands:
+    def list_fuzzy(self, key: str, limit: int) -> db_models.Commands:
         """Interface to get list of all stored commands from database
 
         Args:
             key (str): Key for fuzzy matching.
-            limit (int, optional): Maximum no. of records to return. Defaults to 5.
+            limit (int): Maximum no. of records to return. If `0`, then no filtering and
+            returns all results.
 
         Returns:
             db_models.Commands: Returns all commands model.
@@ -46,11 +63,15 @@ class Cmds:
         fuzzy_commands = db_models.Commands(commands={}, error=commands.error)
 
         choices = list(commands.commands.keys())
+        if limit == 0:
+            limit = len(choices)
         extract_list = process.extract(key, choices, limit=limit)
 
         for extract in extract_list:
             _key = extract[0]
-            fuzzy_commands.commands[_key] = commands.commands[_key]
+            prob = extract[1]
+            if prob >= FUZZY_SEARCH_THRESHOLD:
+                fuzzy_commands.commands[_key] = commands.commands[_key]
 
         return fuzzy_commands
 

@@ -6,6 +6,7 @@
   - [Installation](#installation)
   - [Examples](#examples)
   - [Usage](#usage)
+    - [`cmds copy`](#cmds-copy)
     - [`cmds delete`](#cmds-delete)
     - [`cmds export`](#cmds-export)
     - [`cmds init`](#cmds-init)
@@ -107,6 +108,24 @@ cmds [OPTIONS] COMMAND [ARGS]...
 - `store`: Store a new command into cmds.
 - `update`: Allows updating a stored command by its key.
 
+### `cmds copy`
+
+Allows copying a command by its key.
+
+**Usage**:
+
+```console
+cmds copy [OPTIONS] [KEY]
+```
+
+**Arguments**:
+
+- `[KEY]`: Key for the command.
+
+**Options**:
+
+- `--help`: Show this message and exit.
+
 ### `cmds delete`
 
 Allows deletion of stored command by key
@@ -143,8 +162,8 @@ cmds export [OPTIONS]
 
 ### `cmds init`
 
-Initialize the application. One time process and overwrites existing config and
-data files.
+Initialize the application. One time process and uses existing config and
+data files if available.
 
 Args:
     db_path (str, optional): `--db-path` argument. Defaults to_INITIAL_DB_PATH.
@@ -172,12 +191,17 @@ list --help' to see how.
 **Usage**:
 
 ```bash
-cmds list [OPTIONS]
+cmds list [OPTIONS] [KEY]
 ```
+
+**Arguments**:
+
+- `[KEY]`: Key for the command.
 
 **Options**:
 
-- `-k, --key TEXT`: Key for the command.
+- `-l, --limit INTEGER`: Number of results to show. 0 means all results.  [default: 5]
+
 - `--help`: Show this message and exit.
 
 ### `cmds store`
@@ -220,9 +244,25 @@ cmds update [OPTIONS] ORIG_KEY
 
 ## Release History
 
-`0.1.0` - First working release (built using Python 3.11)
+`0.1.0`
 
-`0.1.1` - Lowered Python version requirement to 3.9. Added support to be installable via multiple package managers.
+- First working release (built using Python 3.11).
+
+`0.1.1`
+
+- Lowered Python version requirement to 3.9. Added support to be installable via
+multiple package managers.
+
+`0.1.2`
+
+- `list` command uses `key` as argument instead of option for wider app
+consistency.
+- `list` command supports passing `--limit` option to limit no. of search results. Works
+  for both with and without fuzzy search.
+- Added `copy` command to allow copying a command by its key.
+- Added a probability threshold for fuzzy search in `list` command. This helps in
+  returning only meaningful matches.
+- **[BUG FIX]** Fixed `init` command overwriting existing database file.
 
 ## Credits
 
@@ -231,3 +271,6 @@ cmds update [OPTIONS] ORIG_KEY
 - Built with ❤️ using [Typer](https://typer.tiangolo.com/).
 - Fuzzy Matching logic: [TheFuzz](https://github.com/seatgeek/thefuzz).
 - Printing in tabular format: [tabulate](https://github.com/astanin/python-tabulate)
+- CLI usage documentation generated using
+  [typer-cli](https://typer.tiangolo.com/typer-cli/) command: `typer
+  command_storage.views.cli utils docs`.
