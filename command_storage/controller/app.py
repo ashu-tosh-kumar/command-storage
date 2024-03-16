@@ -6,6 +6,7 @@ import typer
 from thefuzz import process
 
 from command_storage.controller import config
+from command_storage.models.constants import FUZZY_SEARCH_THRESHOLD
 from command_storage.models.database import db_models
 from command_storage.models.database.json_wrapper import JsonWrapper, get_database_path
 from command_storage.models.enums import error as error_enums
@@ -50,7 +51,9 @@ class Cmds:
 
         for extract in extract_list:
             _key = extract[0]
-            fuzzy_commands.commands[_key] = commands.commands[_key]
+            prob = extract[1]
+            if prob >= FUZZY_SEARCH_THRESHOLD:
+                fuzzy_commands.commands[_key] = commands.commands[_key]
 
         return fuzzy_commands
 
