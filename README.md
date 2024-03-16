@@ -6,6 +6,7 @@
   - [Installation](#installation)
   - [Examples](#examples)
   - [Usage](#usage)
+    - [`cmds copy`](#cmds-copy)
     - [`cmds delete`](#cmds-delete)
     - [`cmds export`](#cmds-export)
     - [`cmds init`](#cmds-init)
@@ -106,6 +107,24 @@ cmds [OPTIONS] COMMAND [ARGS]...
 - `list`: Show list of all stored commands.
 - `store`: Store a new command into cmds.
 - `update`: Allows updating a stored command by its key.
+
+### `cmds copy`
+
+Allows copying a command by its key.
+
+**Usage**:
+
+```console
+cmds copy [OPTIONS] [KEY]
+```
+
+**Arguments**:
+
+- `[KEY]`: Key for the command.
+
+**Options**:
+
+- `--help`: Show this message and exit.
 
 ### `cmds delete`
 

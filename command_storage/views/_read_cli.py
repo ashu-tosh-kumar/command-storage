@@ -3,6 +3,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
+import pyperclip
 import typer
 from tabulate import tabulate
 
@@ -29,6 +30,10 @@ _INITIAL_FILE = typer.Option(
     arguments_enums.Arguments.FILE.value.long,
     arguments_enums.Arguments.FILE.value.short,
     help=arguments_enums.Arguments.FILE.value.description,
+)
+_INITIAL_COPY_KEY = typer.Argument(
+    None,
+    help=arguments_enums.Arguments.KEY.value.description,
 )
 
 
@@ -104,3 +109,27 @@ def export(file: str = _INITIAL_FILE) -> None:
             f"Exporting file to path: {file} failed with '{export_error}'",
             fg=typer.colors.RED,
         )
+
+
+@app.command()
+def copy(key: str = _INITIAL_COPY_KEY) -> None:
+    """Allows copying a command by its key."""
+    cmds = get_cmds()
+
+    all_commands = cmds.list(0)
+
+    if all_commands.error != error_enums.Error.SUCCESS:
+        typer.secho(f"Error in fetching commands: '{all_commands.error}'", fg=typer.colors.RED)
+        raise typer.Exit(1)
+
+    if key not in all_commands.commands:
+        msg = f"There is no commands in cmds with key {key}"
+        typer.secho(msg, fg=typer.colors.RED)
+        raise typer.Exit()
+
+    pyperclip.copy(all_commands.commands[key].command)
+
+    typer.secho(
+        "Copied",
+        fg=typer.colors.GREEN,
+    )
