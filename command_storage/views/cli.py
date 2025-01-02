@@ -92,6 +92,12 @@ _INITIAL_VERSION = typer.Option(
 
 @app.callback(invoke_without_command=True)
 def version(version: Optional[bool] = _INITIAL_VERSION) -> None:
+    """Returns version of the application. Written to help with unittest cases.
+
+    Args:
+        version (Optional[bool], optional): Version of application. Defaults to
+        _INITIAL_VERSION.
+    """
     pass
 
 
