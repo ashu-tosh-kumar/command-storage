@@ -166,3 +166,5 @@ cython_debug/
 .history/
 .DS_Store
 .docs/
+.sonarlint/
+.scannerwork/
