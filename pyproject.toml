@@ -58,6 +58,7 @@ flake8 = "^7.0.0"
 isort = "^5.13.2"
 typer-cli = "^0.12.0"
 coverage = "^7.6.10"
+twine = "^6.0.1"
 
 [build-system]
 requires = ["poetry-core"]

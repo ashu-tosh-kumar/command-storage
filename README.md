@@ -46,6 +46,18 @@ Using [pip](https://pypi.org/project/command-storage/).
 pip install command-storage
 ```
 
+To build the pypi package locally and push to pypi:
+
+```bash
+python -m build
+
+# Upload for testing to test pypi
+twine upload -r testpypi dist/*
+
+# Upload to pypi
+twine upload dist/*
+```
+
 Using [brew](https://brew.sh/). Gem file maintained in repository [homebrew-command-storage](https://github.com/ashu-tosh-kumar/homebrew-command-storage).
   
 ```bash
