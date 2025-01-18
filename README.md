@@ -46,6 +46,18 @@ Using [pip](https://pypi.org/project/command-storage/).
 pip install command-storage
 ```
 
+To build the pypi package locally and push to pypi:
+
+```bash
+python -m build
+
+# Upload for testing to test pypi
+twine upload -r testpypi dist/*
+
+# Upload to pypi
+twine upload dist/*
+```
+
 Using [brew](https://brew.sh/). Gem file maintained in repository [homebrew-command-storage](https://github.com/ashu-tosh-kumar/homebrew-command-storage).
   
 ```bash
@@ -59,8 +71,8 @@ Using [pipx](https://pipx.pypa.io/stable/).
 pipx install command-storage
 ```
 
-**NOTE**: Initialize the application by running `cmds init`. Note that if you want to have
-cross platform sync of data, you can choose location of file to be inside a drive
+**NOTE**: Initialize the application by running `cmds init`. Note that if you want to
+have cross platform sync of data, you can choose location of file to be inside a drive
 installed on your system like Onedrive.
 
 ## Examples
@@ -263,6 +275,10 @@ consistency.
 - Added a probability threshold for fuzzy search in `list` command. This helps in
   returning only meaningful matches.
 - **[BUG FIX]** Fixed `init` command overwriting existing database file.
+
+`0.1.3`
+
+- package upgrades.
 
 ## Credits
 
