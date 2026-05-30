@@ -41,7 +41,7 @@ readme = "README.md"
 cmds = "command_storage.views.cli:app"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9, <3.13"
 typer = "^0.12.0"
 pydantic = "^2.6.4"
 shellingham = "^1.5.4"
@@ -59,6 +59,7 @@ isort = "^5.13.2"
 typer-cli = "^0.12.0"
 coverage = "^7.6.10"
 twine = "^6.0.1"
+pyinstaller = "^6.20.0"
 
 [build-system]
 requires = ["poetry-core"]

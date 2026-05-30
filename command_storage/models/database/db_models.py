@@ -1,6 +1,6 @@
 from typing import Optional, Union
 
-from pydantic import BaseModel, field_serializer, validator
+from pydantic import BaseModel, field_serializer, field_validator
 
 from command_storage.models.enums import error as error_enums
 
@@ -35,7 +35,8 @@ class Commands(BaseModel):
 
         return error
 
-    @validator("error", pre=True)
+    @field_validator("error", mode="before")
+    @classmethod
     def convert_int_into_error_enum(cls, value: Union[error_enums.Error, int]) -> error_enums.Error:
         """Handles the int error and converts into `error_enums.Error`
 

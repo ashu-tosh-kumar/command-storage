@@ -19,11 +19,15 @@ def _initialize_config_file() -> error_enums.Error:
     """
     try:
         CONFIG_DIR_PATH.mkdir(exist_ok=True)
+        # Set restrictive permissions to the config directory
+        CONFIG_DIR_PATH.chmod(0o700)
     except OSError:
         return error_enums.Error.DIR_ERROR
 
     try:
         CONFIG_FILE_PATH.touch(exist_ok=True)
+        # Set restrictive permissions to the config file
+        CONFIG_FILE_PATH.chmod(0o600)
     except OSError:
         return error_enums.Error.FILE_ERROR
 
