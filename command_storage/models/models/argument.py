@@ -1,4 +1,4 @@
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 
 
 class Argument(BaseModel):
@@ -9,7 +9,8 @@ class Argument(BaseModel):
     type: type
     description: str
 
-    @validator("short")
+    @field_validator("short")
+    @classmethod
     def short_should_start_with_dash(cls, short: str) -> str:
         """Checks if short argument had a single dash `-` before it.
 
@@ -27,7 +28,8 @@ class Argument(BaseModel):
 
         return short
 
-    @validator("long")
+    @field_validator("long")
+    @classmethod
     def long_should_start_with_double_dash(cls, long: str) -> str:
         """Checks if long argument had a double dash `--` before it.
 

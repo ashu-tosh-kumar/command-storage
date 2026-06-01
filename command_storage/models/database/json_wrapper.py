@@ -21,8 +21,10 @@ def init_database(db_path: Path) -> error_model.Error:
     try:
         try:
             json.loads(db_path.read_text())  # don't write if exists already
-        except json.JSONDecodeError:
+        except (json.JSONDecodeError, FileNotFoundError):
             db_path.write_text("{}")  # Empty cmds dictionary
+            # Set restrictive permissions to ensure security of stored commands
+            db_path.chmod(0o600)
         return error_model.Error.SUCCESS
     except OSError:
         return error_model.Error.DB_WRITE_ERROR

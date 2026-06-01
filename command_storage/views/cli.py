@@ -77,8 +77,6 @@ def _version_callback(value: bool) -> None:
         typer.secho(f"{APP_NAME} v{VERSION}", fg=typer.colors.CYAN)
         raise typer.Exit()
 
-    typer.secho("Welcome to command-storage. Run 'cmds --help' to get help.", fg=typer.colors.CYAN)
-
 
 _INITIAL_VERSION = typer.Option(
     None,
@@ -91,14 +89,16 @@ _INITIAL_VERSION = typer.Option(
 
 
 @app.callback(invoke_without_command=True)
-def version(version: Optional[bool] = _INITIAL_VERSION) -> None:
-    """Returns version of the application. Written to help with unittest cases.
+def main_callback(ctx: typer.Context, version: Optional[bool] = _INITIAL_VERSION) -> None:
+    """Main callback to handle default behavior and version.
 
     Args:
+        ctx (typer.Context): Typer context
         version (Optional[bool], optional): Version of application. Defaults to
         _INITIAL_VERSION.
     """
-    pass
+    if ctx.invoked_subcommand is None:
+        typer.secho("Welcome to command-storage. Run 'cmds --help' to get help.", fg=typer.colors.CYAN)
 
 
 if __name__ == "__main__":
