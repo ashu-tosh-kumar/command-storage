@@ -1,5 +1,15 @@
 # command-storage
 
+[![PyPI](https://img.shields.io/pypi/v/command-storage?style=flat-square)](https://pypi.org/project/command-storage/)
+[![Python](https://img.shields.io/pypi/pyversions/command-storage?style=flat-square)](https://pypi.org/project/command-storage/)
+[![Downloads](https://img.shields.io/pypi/dm/command-storage?style=flat-square)](https://pypi.org/project/command-storage/)
+[![Homebrew](https://img.shields.io/badge/install-brew-informational?style=flat-square&logo=homebrew&logoColor=white)](https://github.com/ashu-tosh-kumar/homebrew-command-storage)
+[![License: MIT](https://img.shields.io/github/license/ashu-tosh-kumar/command-storage?style=flat-square&color=blue)](LICENSE)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000?style=flat-square)](https://github.com/psf/black)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=flat-square&logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/ashu-tosh-kumar/command-storage?style=flat-square&label=openssf%20scorecard)](https://scorecard.dev/viewer/?uri=github.com/ashu-tosh-kumar/command-storage)
+<!-- OpenSSF Best Practices: register at https://www.bestpractices.dev/en/projects/new then add: [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/PROJECT_ID/badge)](https://www.bestpractices.dev/projects/PROJECT_ID) -->
+
 - [command-storage](#command-storage)
   - [About](#about)
   - [Features](#features)
